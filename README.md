@@ -20,11 +20,11 @@ One approach to tackling this issue is to use nonparametric Bayesian methods, wh
 
 In this project, I adapt the Gibbs sampler from Algorithm 2 in Neal (2000). This algorithm assumes that the data is generated from a Dirichlet process where each data point is drawn from a multivariate Gaussian with parameters according to cluster assignment. Each cluster has a mean drawn from a prior multivariate Gaussian distribution, and the covariance matrix of all clusters is the same. The figure below shows the ground truth labels for data generated in this manner.
 
-![Ground truth](figures/ground_truth.png "Ground truth labels")
+![Ground truth](figures/ground_truth.jpg "Ground truth labels")
 
 The Gibbs sampler learns the most likely partition of clusters by first randomly assigning cluster membership to all datapoints (I choose 10 clusters by default), and then iteratively updating the cluster of each datapoint by drawing from the posterior distribution of its cluster membership conditional on the sampler state. After a specified number of iterations, the predicted cluster membership is simply the mode of all states traversed by the sampler. Below is the result of running the Gibbs sampler for 100 iterations on the the dataset shown above. The Adjusted Rand Index of the labeling is 0.95, meaning that the prediction is almost identical to the ground truth labels.
 
-![Predicted labels](figures/predicted_labels.png "Predicted labels")
+![Predicted labels](figures/predicted_labels.jpg "Predicted labels")
 
 This toy example can be extended in many ways by relaxing the assumption of constant variance, testing on data with a large class imbalance, and experimenting on high-dimensional data. With more time, I would like to test the algorithm on these more difficult problems.
 
